@@ -1,5 +1,5 @@
 # layout/paginate.html
-```
+```html
 <html xmlns:th="http://www.thymeleaf.org" class="h-100">
 <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,35 +39,23 @@
 
 
 # usage.html
-```
+```html
 		<div th:insert="layout/pagenate::pagination(${list}, '/usage')"></div>
 ```
 
 # UsageController.java
-```
+```java
 	@GetMapping
 	public String index(
 			@PageableDefault() Pageable page,
 			Model model) {
-		model.addAttribute("list", users.findAll(page));
+		model.addAttribute("list", usages.findAll(page));
 		return "usage";
 	}
-  ```
-# UsageRepository.java
 ```
-package jp.mirageworld.spring.repository;
-
-import java.util.*;
-
-import org.springframework.data.jpa.repository.*;
-import org.springframework.stereotype.*;
-
-import jp.mirageworld.spring.model.*;
-
+# UsagesRepository.java
+```java
 @Repository
-public interface UsersRepository extends JpaRepository<User, Long> {
-
-	public Optional<User> findByUsername(String username);
-
+public interface UsagesRepository extends JpaRepository<Usage, Long> {
 }
 ```
