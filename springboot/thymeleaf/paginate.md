@@ -1,3 +1,12 @@
+# application.yml
+```yml
+spring:
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true # 1始まり
+```
+
 # layout/paginate.html
 ```html
 <html xmlns:th="http://www.thymeleaf.org" class="h-100">
@@ -11,7 +20,6 @@
 	n=${T(Math).max(page.number-5, 1)},
 	c=${page.getNumber()+1},
 	m=${page.getTotalPages()},
-	t=${page.getTotalPages()},
 	hasPrev=${page.hasPrevious()},
 	hasNext=${page.hasNext()},
 	a='active',
@@ -65,7 +73,6 @@
 </body>
 </html>
 ```
-
 
 # usage.html
 ```html
